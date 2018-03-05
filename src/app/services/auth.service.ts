@@ -38,4 +38,13 @@ export class AuthService {
     // console.log("isExpired", isExpired);
     //return !isExpired;
   }
+  get currentUser(){
+    let token = localStorage.getItem('token');
+    if(!token){
+      return null;
+    }
+    // let jwtHelper = new JwtHelper();
+    // return jwtHelper.decodeToken(token);
+    return new JwtHelper().decodeToken(token);
+  }
 }
